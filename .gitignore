@@ -1,0 +1,25 @@
+# Python cache fayllari
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+.venv/
+env/
+venv/
+
+# Maxfiy ma'lumotlar
+.env
+
+# Log fayllari
+*.log
+
+# SQLite bazasi
+*.db
+
+# IDE sozlamalari
+.vscode/
+.idea/
+
+# OS fayllari
+.DS_Store
+Thumbs.db
