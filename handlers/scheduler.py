@@ -56,7 +56,7 @@ def setup_scheduler(bot: Bot):
     scheduler.add_job(
         send_qazo_reminder,
         trigger="cron",
-        hour=17,
+        hour=22,
         minute=10,
         args=[bot],
         misfire_grace_time=60
