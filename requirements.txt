@@ -4,3 +4,4 @@ apscheduler==3.10.4
 python-dotenv==1.0.1
 pydantic==2.4.2  # Eski versiyaga tushiramiz
 pydantic-core==2.10.1  # Rust kompilyatsiyasi muammosizroq versiya
+psycopg2-binary
