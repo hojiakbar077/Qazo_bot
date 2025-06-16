@@ -12,23 +12,23 @@ router = Router()
 @router.callback_query(F.data == "check_subs")
 async def handle_check_subs(call: CallbackQuery):
     user = call.from_user
-    if is_admin(user.id):
-        add_user(user.id, user.full_name)
+    if await is_admin(user.id):
+        await add_user(user.id, user.full_name)
         await call.message.delete()
         await call.message.answer("✅ Siz adminsiz. Obuna talab qilinmaydi.", reply_markup=admin_menu())
-        logging.info(f"Admin uchun obuna tekshiruvi o‘tkazildi: user_id={user.id}")
+        logging.info(f"Admin uchun obuna tekshiruvi o'tkazildi: user_id={user.id}")
         return
 
-    channels = get_all_channels()
+    channels = await get_all_channels()
     if not channels:
-        add_user(user.id, user.full_name)
+        await add_user(user.id, user.full_name)
         await call.message.delete()
         await call.message.answer("✅ Hozirda obuna talab qilinmaydi. Botdan foydalanishingiz mumkin.", reply_markup=main_menu())
-        logging.info(f"Obuna talab qilinmadi, kanallar bo‘sh: user_id={user.id}")
+        logging.info(f"Obuna talab qilinmadi, kanallar bo'sh: user_id={user.id}")
         return
 
     if await check_subscription(user.id, call.bot, channels):
-        add_user(user.id, user.full_name)
+        await add_user(user.id, user.full_name)
         await call.message.delete()
         await call.message.answer("✅ Obuna tekshirildi. Endi botdan foydalanishingiz mumkin.", reply_markup=main_menu())
         logging.info(f"Obuna tekshirildi: user_id={user.id}")
